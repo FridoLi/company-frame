@@ -25,4 +25,9 @@ public class IndexController {
     public String home(){
         return "home";
     }
+    @GetMapping("/main")
+    @ApiOperation(value = "跳转默认界面")
+    public String main(){
+        return "main";
+    }
 }

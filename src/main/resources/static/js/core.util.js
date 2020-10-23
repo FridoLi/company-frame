@@ -3,18 +3,32 @@
 var CoreUtil = (function () {
     var coreUtil = {};
     /*ajax请求*/
-    coreUtil.sendAjax = function (url, params, ft, method, async,contentType) {
+    coreUtil.sendAjax = function (url, params, ft, method, headers, async, contentType) {
+        debugger
         var roleSaveLoading = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
-        $.ajax({
+        layui.jquery.ajax({
             url: url,
             cache: false,
-            async: async == undefined ? true : async,
+            async: async === undefined ? true : async,
             data: params,
-            type: method == undefined ? "POST" : method,
-            contentType: contentType == undefined ? 'application/json; charset=UTF-8': contentType
+            type: method === undefined ? "POST" : method,
+            contentType: contentType === undefined ? 'application/json; charset=UTF-8': contentType
             ,
             dataType: "json",
+            beforeSend:function (request){
+                if(headers===undefined){
+
+                } else if(headers){
+                    request.setRequestHeader("authorization",CoreUtil.getData("access_token"));
+                    request.setRequestHeader("refresh_token",CoreUtil.getData("refresh_token"));
+                } else {
+                    request.setRequestHeader("authorization",CoreUtil.getData("access_token"));
+                }
+            },
             success: function (res) {
+                if(res.code==4010001){
+                    top.window.location.href="/index/login";
+                }
                 top.layer.close(roleSaveLoading);
                 if (typeof ft == "function") {
                     if(res.code==0) {
@@ -27,6 +41,7 @@ var CoreUtil = (function () {
                 }
             },
             error:function (XMLHttpRequest, textStatus, errorThrown) {
+                debugger
                 top.layer.close(roleSaveLoading);
                 if(XMLHttpRequest.status===404){
                     top.window.location.href="/index/404";

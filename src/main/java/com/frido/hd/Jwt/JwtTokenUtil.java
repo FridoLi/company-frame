@@ -149,7 +149,7 @@ public class JwtTokenUtil {
             Claims claims = getClaimsFromToken(token);
             userId = claims.getSubject();
         } catch (Exception e) {
-            log.error("eror={}",e);
+            log.error("error={}",e);
         }
         return userId;
     }

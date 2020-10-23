@@ -68,7 +68,7 @@ public class Generatortest {
                 .setEntityLombokModel(true)
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setTableFillList(tableFillList)
-                .setInclude("sys_user");//输入表名
+                .setInclude("sys_role");//输入表名
         new AutoGenerator().setGlobalConfig(config)
                 .setDataSource(dataSourceConfig)
                 .setStrategy(strategyConfig)
