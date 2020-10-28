@@ -30,4 +30,9 @@ public class IndexController {
     public String main(){
         return "main";
     }
+    @GetMapping("/menus")
+    @ApiOperation(value = "跳转菜单权限页面")
+    public String menusList(){
+        return "menus/menu";
+    }
 }

@@ -42,6 +42,7 @@ public class ShiroConfig {
         linkedHashMap.put("token",new CustomAccessControlFilter());
         shiroFilterFactoryBean.setFilters(linkedHashMap);
         LinkedHashMap<String,String> filterChainDefinitionMap = new LinkedHashMap<>();
+        filterChainDefinitionMap.put("/treetable-lay/**", "anon");
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/images/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");

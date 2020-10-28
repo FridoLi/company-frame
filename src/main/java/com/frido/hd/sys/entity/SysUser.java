@@ -1,5 +1,6 @@
 package com.frido.hd.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,6 +27,7 @@ private static final long serialVersionUID=1L;
     /**
      * 用户id
      */
+    @TableId("id")
     private String id;
 
     /**
