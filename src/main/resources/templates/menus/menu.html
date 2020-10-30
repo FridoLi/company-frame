@@ -10,6 +10,7 @@
     <div class="menu-table">
          <table class="layui-table" id="menuTable" lay-filter="menuTable"></table>
     </div>
+    <div id="menuTree" ></div>
 </body>
 <script src="../layui/layui.js"></script>
 <script src="../js/core.util.js"></script>
@@ -23,13 +24,14 @@
         var $ = layui.jquery;
         var form = layui.form;
         var treeTable = layui.treeTable;
+        var tree = layui.tree;
         CoreUtil.sendAjax("/sysPermission/permissions",null,function (res){renderTable(res.data)},"GET",false);
         var renderTable = function (data){
             debugger
             treeTable.render({
                 // 渲染表格
                 data: data,
-                treeColIndex: 1, // 树形图标显示在第几列
+                treeColIndex: 0, // 树形图标显示在第几列
                 treeSpid: 0, // 最上级的父级id
                 treeIdName: 'id', // id字段的名称
                 treePidName: 'pid', // pid字段的名称
@@ -37,6 +39,7 @@
                 treeLinkage: false, // 父级展开时是否自动展开所有子级
                 elem: '#menuTable', // 表格id
                 page: false, // 树形表格一般是没有分页的
+                toolbar:'default',
                 cols: [
                     [
                         {type: 'numbers'},
