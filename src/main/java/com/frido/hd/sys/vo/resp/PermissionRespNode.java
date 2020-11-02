@@ -14,4 +14,6 @@ public class PermissionRespNode {
     @ApiModelProperty(value = "接口地址")
     private String url;
     private List<?> children;
+    @ApiModelProperty(value = "是否展开")
+    private boolean spread = true;
 }

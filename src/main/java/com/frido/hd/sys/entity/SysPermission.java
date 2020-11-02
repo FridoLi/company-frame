@@ -1,11 +1,12 @@
 package com.frido.hd.sys.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.util.Date;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -65,7 +66,7 @@ private static final long serialVersionUID=1L;
     /**
      * 菜单权限类型(1:目录;2:菜单;3:按钮)
      */
-    private Boolean type;
+    private Integer type;
 
     /**
      * 状态1:正常 0：禁用

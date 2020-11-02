@@ -2,6 +2,7 @@ package com.frido.hd.sys.controller;
 
 
 import com.frido.hd.sys.service.ISysPermissionService;
+import com.frido.hd.sys.vo.resp.PermissionRespNode;
 import com.frido.hd.sys.vo.resp.SysPermissionRespVO;
 import com.frido.hd.utils.DataResult;
 import io.swagger.annotations.ApiOperation;
@@ -30,6 +31,13 @@ public class SysPermissionController {
     public DataResult<List<SysPermissionRespVO>> getAllMenuPermission(){
         DataResult<List<SysPermissionRespVO>> result = DataResult.success();
         result.setData(iSysPermissionService.selectAll());
+        return result;
+    }
+    @GetMapping("/permission/tree")
+    @ApiOperation(value = "获取所有目录菜单树接口-查到目录")
+    public DataResult<List<PermissionRespNode>> getAllMenusPermissionTree(){
+        DataResult<List<PermissionRespNode>> result=DataResult.success();
+        result.setData(iSysPermissionService.selectAllMenuByTree());
         return result;
     }
 }

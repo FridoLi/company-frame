@@ -2,6 +2,8 @@ package com.frido.hd.sys.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.frido.hd.sys.entity.SysPermission;
+import com.frido.hd.sys.vo.req.PermissionAddReqVO;
+import com.frido.hd.sys.vo.resp.PermissionRespNode;
 import com.frido.hd.sys.vo.resp.SysPermissionRespVO;
 
 import java.util.List;
@@ -16,5 +18,6 @@ import java.util.List;
  */
 public interface ISysPermissionService extends IService<SysPermission> {
     List<SysPermissionRespVO> selectAll();
-
+    List<PermissionRespNode> selectAllMenuByTree();
+    SysPermission addPermission(PermissionAddReqVO vo);
 }
