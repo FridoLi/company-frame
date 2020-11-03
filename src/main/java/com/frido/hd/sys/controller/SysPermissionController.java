@@ -1,16 +1,17 @@
 package com.frido.hd.sys.controller;
 
 
+import com.frido.hd.sys.entity.SysPermission;
 import com.frido.hd.sys.service.ISysPermissionService;
+import com.frido.hd.sys.vo.req.PermissionAddReqVO;
 import com.frido.hd.sys.vo.resp.PermissionRespNode;
 import com.frido.hd.sys.vo.resp.SysPermissionRespVO;
 import com.frido.hd.utils.DataResult;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -38,6 +39,13 @@ public class SysPermissionController {
     public DataResult<List<PermissionRespNode>> getAllMenusPermissionTree(){
         DataResult<List<PermissionRespNode>> result=DataResult.success();
         result.setData(iSysPermissionService.selectAllMenuByTree());
+        return result;
+    }
+    @PostMapping("/permission")
+    @ApiOperation(value = "新增菜单权限接口")
+    public DataResult<SysPermission> addPermission(@RequestBody @Valid PermissionAddReqVO vo){
+        DataResult<SysPermission> result = DataResult.success();
+        result.setData(iSysPermissionService.addPermission(vo));
         return result;
     }
 }
